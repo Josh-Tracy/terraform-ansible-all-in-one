@@ -21,7 +21,7 @@ variable "ec2-instances-ue1a" {
       associate_with_private_ip = "10.0.1.50",
       tags = {
         "Name" = "ec2_ue1a_ubuntu_dev",
-        "OS" = "ubuntu"
+        "OS" = "ubuntu",
       }
       },
      "redhat-dev-server" = {
@@ -34,7 +34,7 @@ variable "ec2-instances-ue1a" {
        associate_with_private_ip = "10.0.1.50",
        tags = {
          "Name" = "ec2_ue1a_redhat_dev",
-         "OS" = "redhat"
+         "OS" = "redhat",
         }
     }
   }
@@ -63,7 +63,7 @@ variable "ec2-instances-ue1b" {
       associate_with_private_ip = "10.0.2.50",
       tags = {
         "Name" = "ec2_ue1b_ubuntu_dev",
-        "OS" = "ubuntu"
+        "OS" = "ubuntu",
       }
       },
      "redhat-dev-server" = {
@@ -76,11 +76,26 @@ variable "ec2-instances-ue1b" {
        associate_with_private_ip = "10.0.2.50",
        tags = {
          "Name" = "ec2_ue1b_redhat_dev",
-         "OS" = "redhat"
+         "OS" = "redhat",
         }
     }
   }
 }
+
+variable "tag_terraform_deploy_edit_date" {
+  type        = string
+  description = "The date this was lest updated or edited by terraform"
+  default = "Dec 6 2021"
+}
+
+
+variable "tag_owner" {
+  type        = string
+  description = "Who deployed this"
+  default = "Joshua Tracy"
+}
+
+
 variable "keypairs" {
   description = "keypairs for ec2 instances"
   type = map(object({
@@ -93,14 +108,14 @@ variable "keypairs" {
       key_name = "ubuntu-dev-key",
       public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOTMJkBnlxhsdgU7k4gQOUw9IZjdS45k0Y51J9CyjhFIRcnCOq7s9JKeOCUf2RBSCs7IvTRS77g+5fiVYq0hgqlvA4UqVqYOjPOUgq1f74y7UwytB3GAk8/0UJrAav8H1DIwtDrI3xg3+u2Kj00kUmtkZubY/vkqZIwIBh0NZBkF2vxTYgJ9waePA4c7HSVMQYg3gEFJFVrXutXLApg4EOD5g97HOjBKS+JeW06bjQqRGh+ZgPz6VSUew4zPIwIu8cIvs21w2/9kFNwUuATVmj4m2rA/0cPxeATefG93y8nRXX0aXpRnm3GuKggUyd+HlQPXeELL14YIF6TrauYjLgKfDDDmRINThmiNMvlnxRVwxsKbwoQotQE18TaEJGf+GotfBSSjH9FXghGzTkuXSkoR4v4Aq97TlqFp2Ohm7Tm3vizLhN5fh/VW4Tag0M+rV3WyuV3NDtlJOS0TNaEPpO9wHrmaPgdDrWTvom0HDElfHBsM6h4VIEOFpYDdqXxo0= professorhojo@shinra",
       tags = {
-        "Name" = "ubuntu-dev-key"
+        "Name" = "ubuntu-dev-key",
       },
     }
     "redhat-dev-key" = {
       key_name = "redhat-dev-key",
       public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvKe4nQLItRV+w1dmQIS/+Ttaf2ApDTy6LFfG9vBzvyDUQP2h8YvJ1U0EaS8mnu2RACUK2+vQFNiMSWQLJb49ED7nOFfUI7xl+P8561jd9OXo6fQpg8t5Ang1CDtMf3gx2qVwJMvmxruAwIxjOSz9RHjIbr6A6pFhfJKRMVyjGMCECo6LfNuspt2HgEfTbX/6CkVuUv8W0EvOcRm5Mk7gGP1JwAQ9KBw8XaIuTTbcvsVt+dWp5ltiCn3GxEfZpSPM8ual0TLTHpuAiglm9a0qie8YWrZ7g/PgmjujGNSOfH9NKz6QKY90OcaqB+zFr3qyw3R52KA51lwHa1AkOI958OcyFIBG8+pQPSncUCtxRQ4ve86YIlL3DgmK98TQV925eMWANOs2KFyLzD82lv++C8MD23MQtr9uNvGLdUeYTwrF3PIehbEMlBQsyf7cQm45n93z07soiQqmA5ca4QQqWmegouaaCPrA2I0D5MzX+7jus539bDnycjqA/iBjYXLc= professorhojo@shinra",
       tags = {
-        "Name" = "redhat-dev-key"
+        "Name" = "redhat-dev-key",
         }
       }
     }
