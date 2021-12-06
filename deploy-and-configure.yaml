@@ -1,0 +1,28 @@
+- name: main
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: plan
+      terraform:
+        project_path: 'terraform/'
+        force_init: yes
+
+    - name: apply
+      terraform:
+        project_path: 'terraform/'
+        lock: true
+        state: present
+
+    - name: wait
+      wait_for:
+        timeout: 10
+      delegate_to: localhost
+
+- name: secondary
+  hosts: redhat
+
+  tasks:
+
+    - name: ping test
+      ping:
